@@ -43,6 +43,5 @@ data
 #no keys
 keys
 
-#no test stuff, no output
+#no test stuff
 x-svg-dev
-svg
