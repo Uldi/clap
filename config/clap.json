@@ -10,10 +10,24 @@
                     "name": "Client Device",
                     "details": "", 
                     "rte": [ 
-                        {"name":"SPA, Native/Hybrid App", "state":"green", "io": [
-                            {"serviceBus":"r", "consumer": "green"},
-                            {"serviceBus":"m", "consumer": "grey"}
-                        ]}, 
+                        {"name":"SPA, Native/Hybrid App", "state":"green", 
+                            "io": [
+                                {"serviceBus":"r", "consumer": "green"},
+                                {"serviceBus":"m", "consumer": "grey"}
+                            ],
+                            "detail": {
+                                "db": [
+                                    {"row":"oracle", "state": "green"},
+                                    {"row":"db2", "state": "yellow"},
+                                    {"row":"mssql", "state": "green"},
+                                    {"row":"mongodb", "state": "blue"}
+                                ],
+                                "mq": [
+                                    {"row":"mqseries", "state": "yellow"},
+                                    {"row":"rabbitmq", "state": "blue"}
+                                ]
+                            }
+                        }, 
                         {"name":"Digital Workplace", "state":"green", "io": [
                             {"serviceBus":"r", "consumer": "green"},
                             {"serviceBus":"s", "consumer": "green"},
@@ -254,11 +268,31 @@
         {"name" : "Workload Balancing"}
     ],
     "serviceBus" : [
-        {"name": "CORBA", "id": "c", "y": -1},
+        {"name": "CORBA", "id": "c"},
         {"name": "MQ-Series", "id": "m"},
         {"name": "File Transfer", "id": "f"},
         {"name": "SOAP", "id": "s"},
         {"name": "REST", "id": "r"}
+    ],
+    "detailViews" : [
+        {
+            "id": "db",
+            "name": "Database",
+            "row" : [
+                {"name": "Oracle", "id": "oracle"},
+                {"name": "DB2", "id": "db2"},
+                {"name": "MSSQL", "id": "mssql"},
+                {"name": "MongoDB", "id": "mongodb"}
+            ]
+        },
+        {
+            "id": "mq",
+            "name": "Messaging",
+            "row" : [
+                {"name": "IBM MQSeries", "id": "mqseries"},
+                {"name": "RabbitMQ", "id": "rabbitmq"}
+            ]
+        }
     ]
     }
 }

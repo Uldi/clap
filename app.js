@@ -16,6 +16,10 @@ generateClapSvg(clapJsonContent.clap);
 var serviceBuses = {};
 generateIOSvg(clapJsonContent.clap);
 
+//generate detailviews
+var rows = {};
+generateDetailViewsSvg(clapJsonContent.clap);
+
 
 //=========================================================
 // Main functions
@@ -49,6 +53,36 @@ function generateIOSvg(clap) {
 
     writeSVG(svgOutput, process.env.IO_SVG_FILE || 'svg/io_default.svg');
     writeHtml(svgOutput, process.env.IO_HTML_FILE || 'svg/io_default.html');
+}
+
+//must be called after generateClapSvg!
+function generateDetailViewsSvg(clap) {
+    for (v = 0; v < clap.detailViews.length; v++) {
+        var detailView = clap.detailViews[v];
+        rows = {};
+        generateDetailViewSvg(clap, detailView);
+    }
+}
+function generateDetailViewSvg(clap, detailView) {
+    //first set config values
+    //setupIOConfig(clap);
+    var svgOutput = generateRteAndDpeSvg(clap, false);
+
+
+    svgOutput = svgOutput + generateDetailViewRowsSvg(detailView);
+    svgOutput = svgOutput + generateDetailSvg(clap, detailView);
+    svgOutput = svgOutput + svgGenerator.getDetailViewLeftSvgFragment(detailView);
+
+
+    svgOutput = svgGenerator.getHeaderSvgFragement() + svgOutput + svgGenerator.getFooterSvgFragement();
+    htmlFileName = process.env.DETAILVIEW_HTML_FILE || 'svg/detailView_default_XX.html';
+    svgFileName = process.env.DETAILVIEW_SVG_FILE || 'svg/detailView_default_XX.svg';
+
+    htmlFileName = htmlFileName.replace("XX", detailView.name);
+    svgFileName = svgFileName.replace("XX", detailView.name);
+
+    writeSVG(svgOutput, svgFileName);
+    writeHtml(svgOutput, htmlFileName);
 }
 
 //=========================================================
@@ -276,6 +310,73 @@ function generateProvAndConsSvg(clap) {
 }
 
 //=========================================================
+// DetailView generation methods
+//=========================================================
+
+//Service Buses - bottom up
+function generateDetailViewRowsSvg(detailView) {
+    var dynSvgOutput = "";
+    //naja etwas getrickst
+    var y = config.left.infraCS.y + config.left.infraCS.height;
+
+    for (i = 0; i < detailView.row.length; i++) {
+        y = y - config.io.serviceBus.spaceHeight - config.io.serviceBus.height;
+        var row = detailView.row[i];
+        row.y = y;
+        dynSvgOutput = dynSvgOutput + svgGenerator.getDetailViewRowSvgFragement(row, y);
+
+        rows[row.id] = row;
+    }
+    
+    detailView.detail = {};
+    detailView.rte = {};
+    
+    //config.left.io.y
+    detailView.detail.y = y - config.io.serviceBus.spaceHeight - config.left.io.height;
+    //config.left.ioRte.y 
+    detailView.rte.y = config.rte.y;
+    //config.left.ioRte.height 
+    detailView.rte.height = detailView.detail.y - detailView.rte.y - config.left.spaceHeight;
+    
+    return dynSvgOutput;
+}
+
+function generateDetailSvg(clap, detailView) {
+    var dynSvgOutput = "";
+
+    for (d = 0; d < clap.dpeCloud.length; d++) {
+        var dpeCloud = clap.dpeCloud[d];
+
+        //iterate over dpe
+        for (i = 0; i < dpeCloud.dpe.length; i++) {
+            var dpe = dpeCloud.dpe[i];
+
+            //iterate over rte
+            for (j = 0; j < dpe.rte.length; j++) {
+                var rte = dpe.rte[j];
+                if (rte.state != "invisible") {
+                    //iterate over io
+                    if (rte.detail) {
+                        var detailConf = rte.detail[detailView.id];
+                        if (detailConf) {
+                            for (k = 0; k < detailConf.length; k++) {
+                                var detail = detailConf[k];
+                                var x = rte.x + config.rte.width/2;
+                                var y = rows[detail.row].y + config.io.serviceBus.height/2;
+                                dynSvgOutput = dynSvgOutput + 
+                                        svgGenerator.getDetailSvgFragement(x, y, detail.state);
+                                //add prov, cons
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return dynSvgOutput;
+}
+
+//=========================================================
 // Output file writing methods
 //=========================================================
 
@@ -288,7 +389,7 @@ function writeSVG(dynSVG, filename) {
         if (err) {
             return console.error(err);
         }
-        console.log("Data written successfully!");
+        console.log("Data written successfully! ", filename);
     });
 }
 
@@ -300,6 +401,6 @@ function writeHtml(dynSVG, filename) {
         if (err) {
             return console.error(err);
         }
-        console.log("Data written successfully!");
+        console.log("Data written successfully! ", filename);
     });
 }

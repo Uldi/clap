@@ -39,6 +39,12 @@ function SvgGenerator(config) {
     var rteIoEjsTemplate = fs.readFileSync(process.env.EJS_RTE_IO_FILE || 'templates/rte-io.ejs', 'utf-8');
     var leftIoEjsTemplate = fs.readFileSync(process.env.EJS_LEFT_IO_FILE || 'templates/left-io.ejs', 'utf-8');
 
+    //DetailView Templates
+    var detailViewRowEjsTemplate = fs.readFileSync(process.env.EJS_DETAILVIEW_ROW_FILE || 'templates/detailview-row.ejs', 'utf-8');
+    var leftDetailViewEjsTemplate = fs.readFileSync(process.env.EJS_LEFT_DETAILVIEW_FILE || 'templates/left-detailview.ejs', 'utf-8');
+    var detailEjsTemplate = fs.readFileSync(process.env.EJS_DETAIL_FILE || 'templates/detail.ejs', 'utf-8');
+    
+
     this.getRteSvgFragment = function getRteSvgFragment(x, rte, colored) {
         var rteData;
         var template;
@@ -116,24 +122,25 @@ function SvgGenerator(config) {
         return svg;
     }
 
-    var ioColors = {
+    var stateColors = {
         green: "rgb(0,191,0)",
         blue: "rgb(0,0,191)",
         red: "rgb(255,0,0)",
-        grey: "rgb(150,150,150)"};
+        grey: "rgb(150,150,150)",
+        yellow: "rgb(255,255,0)"};
 
     //IO Functions
     this.getIoProvConsSvgFragement = function getIoProvConsSvgFragement(x, y, io) {
         var svgOutput = "";
         var ejsData = {config: config, data: {x: x, y: y}};
         if (io.provider) {
-            ejsData.data.provFill = ioColors[io.provider];
+            ejsData.data.provFill = stateColors[io.provider];
             var svg = ejs.render(providerEjsTemplate, ejsData, {});
             console.log("IO prov-provider svg fragment: ", svg);
             svgOutput = svgOutput + svg;
         }
         if (io.consumer) {
-            ejsData.data.consFill = ioColors[io.consumer];
+            ejsData.data.consFill = stateColors[io.consumer];
             var svg = ejs.render(consumerEjsTemplate, ejsData, {});
             console.log("IO prov-consumer svg fragment: ", svg);
             svgOutput = svgOutput + svg;
@@ -152,6 +159,29 @@ function SvgGenerator(config) {
         var ejsData = {data:{}, config: config};
         var svg = ejs.render(leftIoEjsTemplate, ejsData, {});
         console.log("left IO svg fragment: ", svg);
+        return svg;
+    }
+
+    //detailView Functions
+    this.getDetailViewRowSvgFragement = function getDetailViewRowSvgFragement(row, y) {
+        var ejsData = {data:{name: row.name, y: y}, config: config};
+        var svg = ejs.render(detailViewRowEjsTemplate, ejsData, {});
+        console.log("detailview row svg fragment: ", svg);
+        return svg;
+    }
+
+    this.getDetailViewLeftSvgFragment = function getDetailViewLeftSvgFragment(detailView) {
+        var ejsData = {data:detailView, config: config};
+        var svg = ejs.render(leftDetailViewEjsTemplate, ejsData, {});
+        console.log("left DetailView svg fragment: ", svg);
+        return svg;
+    }
+
+    this.getDetailSvgFragement = function getDetailSvgFragement(x, y, color) {
+        var ejsData = {config: config, data: {x: x, y: y}};
+        ejsData.data.fill = stateColors[color];
+        var svg = ejs.render(detailEjsTemplate, ejsData, {});
+        console.log("detail svg fragment: ", svg);
         return svg;
     }
 }
