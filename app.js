@@ -290,16 +290,17 @@ function generateProvAndConsSvg(clap) {
             for (j = 0; j < dpe.rte.length; j++) {
                 var rte = dpe.rte[j];
                 if (rte.state != "invisible") {
-                    //iterate over io
-                    if (rte.io) {
-                        for (k = 0; k < rte.io.length; k++) {
-                            var io = rte.io[k];
-                            //-5 als optische Korrektur
-                            var x = rte.x + config.rte.width/2 - 5;
-                            var y = serviceBuses[io.serviceBus].y + config.io.serviceBus.height/2;
-                            dynSvgOutput = dynSvgOutput + 
-                                    svgGenerator.getIoProvConsSvgFragement(x, y, io);
-                            //add prov, cons
+                    //iterate over detail
+                    if (rte.detail) {
+                        var detailConf = rte.detail["io"];
+                        if (detailConf) {
+                            for (k = 0; k < detailConf.length; k++) {
+                                var detail = detailConf[k];
+                                var x = rte.x + config.rte.width/2 -5;
+                                var y = serviceBuses[detail.serviceBus].y + config.io.serviceBus.height/2;
+                                dynSvgOutput = dynSvgOutput + 
+                                        svgGenerator.getIoProvConsSvgFragement(x, y, detail);
+                            }
                         }
                     }
                 }
@@ -355,7 +356,7 @@ function generateDetailSvg(clap, detailView) {
             for (j = 0; j < dpe.rte.length; j++) {
                 var rte = dpe.rte[j];
                 if (rte.state != "invisible") {
-                    //iterate over io
+                    //iterate over detail
                     if (rte.detail) {
                         var detailConf = rte.detail[detailView.id];
                         if (detailConf) {
