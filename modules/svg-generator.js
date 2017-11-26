@@ -36,9 +36,6 @@ function SvgGenerator(config) {
     //IO - Templates
     var providerEjsTemplate = fs.readFileSync(process.env.EJS_PROVIDER_FILE || 'templates/provider.ejs', 'utf-8');
     var consumerEjsTemplate = fs.readFileSync(process.env.EJS_CONSUMER_FILE || 'templates/consumer.ejs', 'utf-8');
-    var serviceBusEjsTemplate = fs.readFileSync(process.env.EJS_SERVICEBUS_FILE || 'templates/service-bus.ejs', 'utf-8');
-    //var rteIoEjsTemplate = fs.readFileSync(process.env.EJS_RTE_IO_FILE || 'templates/rte-io.ejs', 'utf-8');
-    var leftIoEjsTemplate = fs.readFileSync(process.env.EJS_LEFT_IO_FILE || 'templates/left-io.ejs', 'utf-8');
 
     //DetailView Templates
     var detailViewRowEjsTemplate = fs.readFileSync(process.env.EJS_DETAILVIEW_ROW_FILE || 'templates/detailview-row.ejs', 'utf-8');
@@ -148,20 +145,6 @@ function SvgGenerator(config) {
             svgOutput = svgOutput + svg;
         }
         return svgOutput;
-    }
-
-    this.getServiceBusSvgFragement = function getServiceBusSvgFragement(serviceBus, y) {
-        var ejsData = {data:{name: serviceBus.name, y: y}, config: config};
-        var svg = ejs.render(serviceBusEjsTemplate, ejsData, {});
-        console.log("service-bus svg fragment: ", svg);
-        return svg;
-    }
-
-    this.getLeftIoSvgFragment = function getLeftIoSvgFragment() {
-        var ejsData = {data:{}, config: config};
-        var svg = ejs.render(leftIoEjsTemplate, ejsData, {});
-        console.log("left IO svg fragment: ", svg);
-        return svg;
     }
 
     //detailView Functions
