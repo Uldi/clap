@@ -23,6 +23,7 @@ function SvgGenerator(config) {
     };
 
     var rteEjsTemplate = fs.readFileSync(process.env.EJS_RTE_FILE || 'templates/rte.ejs', 'utf-8');
+    var rteUncoloredEjsTemplate = fs.readFileSync(process.env.EJS_RTE_UNCOLORED_FILE || 'templates/rte-uncolored.ejs', 'utf-8');
     var dpeCloudEjsTemplate = fs.readFileSync(process.env.EJS_DPECLOUD_FILE || 'templates/dpe-cloud.ejs', 'utf-8');
     var dpeEjsTemplate = fs.readFileSync(process.env.EJS_DPE_FILE || 'templates/dpe.ejs', 'utf-8');
     var appCSEjsTemplate = fs.readFileSync(process.env.EJS_APP_CS_FILE || 'templates/appCS.ejs', 'utf-8');
@@ -36,14 +37,14 @@ function SvgGenerator(config) {
     var providerEjsTemplate = fs.readFileSync(process.env.EJS_PROVIDER_FILE || 'templates/provider.ejs', 'utf-8');
     var consumerEjsTemplate = fs.readFileSync(process.env.EJS_CONSUMER_FILE || 'templates/consumer.ejs', 'utf-8');
     var serviceBusEjsTemplate = fs.readFileSync(process.env.EJS_SERVICEBUS_FILE || 'templates/service-bus.ejs', 'utf-8');
-    var rteIoEjsTemplate = fs.readFileSync(process.env.EJS_RTE_IO_FILE || 'templates/rte-io.ejs', 'utf-8');
+    //var rteIoEjsTemplate = fs.readFileSync(process.env.EJS_RTE_IO_FILE || 'templates/rte-io.ejs', 'utf-8');
     var leftIoEjsTemplate = fs.readFileSync(process.env.EJS_LEFT_IO_FILE || 'templates/left-io.ejs', 'utf-8');
 
     //DetailView Templates
     var detailViewRowEjsTemplate = fs.readFileSync(process.env.EJS_DETAILVIEW_ROW_FILE || 'templates/detailview-row.ejs', 'utf-8');
     var leftDetailViewEjsTemplate = fs.readFileSync(process.env.EJS_LEFT_DETAILVIEW_FILE || 'templates/left-detailview.ejs', 'utf-8');
     var detailEjsTemplate = fs.readFileSync(process.env.EJS_DETAIL_FILE || 'templates/detail.ejs', 'utf-8');
-    
+    var gradientEjsTemplate = fs.readFileSync(process.env.EJS_GRADIENT_FILE || 'templates/gradient.ejs', 'utf-8');
 
     this.getRteSvgFragment = function getRteSvgFragment(x, rte, colored) {
         var rteData;
@@ -54,7 +55,7 @@ function SvgGenerator(config) {
             template = rteEjsTemplate;
         } else {
             rteData = rteDatas["neutral"];
-            template = rteIoEjsTemplate;
+            template = rteUncoloredEjsTemplate;
         }
         rteData.x = x;
         rteData.rte = rte;
@@ -114,6 +115,7 @@ function SvgGenerator(config) {
         console.log("header svg fragment: ", svg);
         return svg;
     }
+
 
     this.getFooterSvgFragement = function getFooterSvgFragement() {
         var ejsData = {config: config};
@@ -184,4 +186,11 @@ function SvgGenerator(config) {
         console.log("detail svg fragment: ", svg);
         return svg;
     }
+
+    this.getDetailViewRowGradientSvgFragement = function getDetailViewRowGradientSvgFragement(gradient) {
+        var ejsData = {config: config, gradient: gradient};
+        var svg = ejs.render(gradientEjsTemplate, ejsData, {});
+        console.log("gradient svg fragment: ", svg);
+        return svg;
+    } 
 }

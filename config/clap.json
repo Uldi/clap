@@ -16,11 +16,11 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "green"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "grey"
                                         }
                                     ],
@@ -60,15 +60,15 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "green"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "grey"
                                         }
                                     ]
@@ -99,27 +99,27 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "c",
+                                            "row": "c",
                                             "consumer": "red"
                                         }
                                     ]
@@ -132,22 +132,22 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "green",
                                             "provider": "green"
                                         }
@@ -161,12 +161,12 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green",
                                             "provider": "green"
                                         }
@@ -179,27 +179,27 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "c",
+                                            "row": "c",
                                             "consumer": "red"
                                         }
                                     ]
@@ -217,22 +217,22 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "c",
+                                            "row": "c",
                                             "provider": "red"
                                         }
                                     ]
@@ -244,22 +244,22 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "c",
+                                            "row": "c",
                                             "provider": "red"
                                         }
                                     ]
@@ -297,22 +297,22 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "green",
                                             "provider": "green"
                                         }
@@ -335,22 +335,22 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         }
@@ -363,17 +363,17 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         }
@@ -392,22 +392,22 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         }
@@ -430,22 +430,22 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "green",
                                             "provider": "green"
                                         }
@@ -458,22 +458,22 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         }
@@ -486,22 +486,22 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         }
@@ -514,22 +514,22 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "m",
+                                            "row": "m",
                                             "consumer": "green",
                                             "provider": "green"
                                         }
@@ -554,17 +554,17 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         }
@@ -577,17 +577,17 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         }
@@ -600,17 +600,17 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         }
@@ -623,17 +623,17 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         }
@@ -652,17 +652,17 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         }
@@ -675,17 +675,17 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "green",
                                             "provider": "green"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "blue",
                                             "provider": "blue"
                                         }
@@ -698,17 +698,17 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         }
@@ -737,17 +737,17 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         }
@@ -760,12 +760,12 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         }
@@ -784,17 +784,17 @@
                                 "detail": {
                                     "io": [
                                         {
-                                            "serviceBus": "r",
+                                            "row": "r",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         },
                                         {
-                                            "serviceBus": "s",
+                                            "row": "s",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         },
                                         {
-                                            "serviceBus": "f",
+                                            "row": "f",
                                             "consumer": "grey",
                                             "provider": "grey"
                                         }
@@ -858,6 +858,36 @@
             }
         ],
         "detailViews": [
+            {
+                "id": "io",
+                "name": "Service Bus",
+                "gradient": {
+                    "colorDark": "#0000bf",
+                    "colorLight": "#aad4ff"
+                },
+                "row": [
+                    {
+                        "name": "CORBA",
+                        "id": "c"
+                    },
+                    {
+                        "name": "MQ-Series",
+                        "id": "m"
+                    },
+                    {
+                        "name": "File Transfer",
+                        "id": "f"
+                    },
+                    {
+                        "name": "SOAP",
+                        "id": "s"
+                    },
+                    {
+                        "name": "REST",
+                        "id": "r"
+                    }
+                ]
+            },
             {
                 "id": "db",
                 "name": "Database",

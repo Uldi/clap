@@ -13,8 +13,10 @@ var svgGenerator = require('./modules/svg-generator.js')(config);
 
 //generate CLAP SVG
 generateClapSvg(clapJsonContent.clap);
-var serviceBuses = {};
-generateIOSvg(clapJsonContent.clap);
+
+//generate IO
+//var serviceBuses = {};
+//generateIOSvg(clapJsonContent.clap);
 
 //generate detailviews
 var rows = {};
@@ -57,6 +59,7 @@ function generateIOSvg(clap) {
 
 //must be called after generateClapSvg!
 function generateDetailViewsSvg(clap) {
+    setupDetailViewConfig(clap);
     for (v = 0; v < clap.detailViews.length; v++) {
         var detailView = clap.detailViews[v];
         rows = {};
@@ -73,13 +76,18 @@ function generateDetailViewSvg(clap, detailView) {
     svgOutput = svgOutput + generateDetailSvg(clap, detailView);
     svgOutput = svgOutput + svgGenerator.getDetailViewLeftSvgFragment(detailView);
 
+    var gradient = config.detailView.row.gradient;
+    if (detailView.gradient) {
+        gradient = detailView.gradient;
+    }
 
-    svgOutput = svgGenerator.getHeaderSvgFragement() + svgOutput + svgGenerator.getFooterSvgFragement();
+    svgOutput = svgGenerator.getHeaderSvgFragement() + svgGenerator.getDetailViewRowGradientSvgFragement(gradient)
+    + svgOutput + svgGenerator.getFooterSvgFragement();
     htmlFileName = process.env.DETAILVIEW_HTML_FILE || 'svg/detailView_default_XX.html';
     svgFileName = process.env.DETAILVIEW_SVG_FILE || 'svg/detailView_default_XX.svg';
 
-    htmlFileName = htmlFileName.replace("XX", detailView.name);
-    svgFileName = svgFileName.replace("XX", detailView.name);
+    htmlFileName = htmlFileName.replace("XX", detailView.name).replace(/ /g, "_");
+    svgFileName = svgFileName.replace("XX", detailView.name).replace(/ /g, "_");
 
     writeSVG(svgOutput, svgFileName);
     writeHtml(svgOutput, htmlFileName);
@@ -314,14 +322,27 @@ function generateProvAndConsSvg(clap) {
 // DetailView generation methods
 //=========================================================
 
-//Service Buses - bottom up
+//calculate io configuration --> needs to be called after RTE's were generated!
+function setupDetailViewConfig(clap) {
+    config.detailView.row.startX = config.svg.leftBorder;
+    //adjust width to more space to the left
+    config.svg.width = config.svg.width - config.rte.startX + config.detailView.startX;
+    config.detailView.row.width = config.svg.width - config.svg.leftBorder - config.svg.rightBorder;
+
+    //set new startX
+    config.left.width = config.left.width + config.detailView.startX - config.rte.startX;
+    config.rte.startX = config.detailView.startX;
+    config.dpe.startX = config.detailView.startX;
+}
+
+//Detail View  - bottom up
 function generateDetailViewRowsSvg(detailView) {
     var dynSvgOutput = "";
     //naja etwas getrickst
     var y = config.left.infraCS.y + config.left.infraCS.height;
 
     for (i = 0; i < detailView.row.length; i++) {
-        y = y - config.io.serviceBus.spaceHeight - config.io.serviceBus.height;
+        y = y - config.detailView.row.spaceHeight - config.detailView.row.height;
         var row = detailView.row[i];
         row.y = y;
         dynSvgOutput = dynSvgOutput + svgGenerator.getDetailViewRowSvgFragement(row, y);
@@ -333,7 +354,7 @@ function generateDetailViewRowsSvg(detailView) {
     detailView.rte = {};
     
     //config.left.io.y
-    detailView.detail.y = y - config.io.serviceBus.spaceHeight - config.left.io.height;
+    detailView.detail.y = y - config.detailView.row.spaceHeight - config.left.detailView.height;
     //config.left.ioRte.y 
     detailView.rte.y = config.rte.y;
     //config.left.ioRte.height 
@@ -363,10 +384,16 @@ function generateDetailSvg(clap, detailView) {
                             for (k = 0; k < detailConf.length; k++) {
                                 var detail = detailConf[k];
                                 var x = rte.x + config.rte.width/2;
-                                var y = rows[detail.row].y + config.io.serviceBus.height/2;
-                                dynSvgOutput = dynSvgOutput + 
-                                        svgGenerator.getDetailSvgFragement(x, y, detail.state);
-                                //add prov, cons
+                                var y = rows[detail.row].y + config.detailView.row.height/2;
+                                if (detailView.id != "io") {
+                                    dynSvgOutput = dynSvgOutput + 
+                                    svgGenerator.getDetailSvgFragement(x, y, detail.state);
+                                } else {
+                                    //kosmetische Korrektur
+                                    x = x - 5;
+                                    dynSvgOutput = dynSvgOutput + 
+                                    svgGenerator.getIoProvConsSvgFragement(x, y, detail);
+                                }
                             }
                         }
                     }
