@@ -835,28 +835,6 @@
                 "name": "Workload Balancing"
             }
         ],
-        "serviceBus": [
-            {
-                "name": "CORBA",
-                "id": "c"
-            },
-            {
-                "name": "MQ-Series",
-                "id": "m"
-            },
-            {
-                "name": "File Transfer",
-                "id": "f"
-            },
-            {
-                "name": "SOAP",
-                "id": "s"
-            },
-            {
-                "name": "REST",
-                "id": "r"
-            }
-        ],
         "detailViews": [
             {
                 "id": "io",
@@ -868,11 +846,19 @@
                 "row": [
                     {
                         "name": "CORBA",
-                        "id": "c"
+                        "id": "c",
+                        "gradient": {
+                            "colorDark": "#ff7f00",
+                            "colorLight": "#ffffaa"
+                        }
                     },
                     {
                         "name": "MQ-Series",
-                        "id": "m"
+                        "id": "m",
+                        "gradient": {
+                            "colorDark": "#ff7f00",
+                            "colorLight": "#ffffaa"
+                        }
                     },
                     {
                         "name": "File Transfer",

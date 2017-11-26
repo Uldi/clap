@@ -54,13 +54,7 @@ function generateDetailViewSvg(clap, detailView) {
     svgOutput = svgOutput + generateDetailSvg(clap, detailView);
     svgOutput = svgOutput + svgGenerator.getDetailViewLeftSvgFragment(detailView);
 
-    var gradient = config.detailView.row.gradient;
-    if (detailView.gradient) {
-        gradient = detailView.gradient;
-    }
-
-    svgOutput = svgGenerator.getHeaderSvgFragement() + svgGenerator.getDetailViewRowGradientSvgFragement(gradient)
-    + svgOutput + svgGenerator.getFooterSvgFragement();
+    svgOutput = svgGenerator.getHeaderSvgFragement() + svgOutput + svgGenerator.getFooterSvgFragement();
     htmlFileName = process.env.DETAILVIEW_HTML_FILE || 'svg/detailView_default_XX.html';
     svgFileName = process.env.DETAILVIEW_SVG_FILE || 'svg/detailView_default_XX.svg';
 
@@ -251,7 +245,10 @@ function generateDetailViewRowsSvg(detailView) {
         y = y - config.detailView.row.spaceHeight - config.detailView.row.height;
         var row = detailView.row[i];
         row.y = y;
-        dynSvgOutput = dynSvgOutput + svgGenerator.getDetailViewRowSvgFragement(row, y);
+
+        //evaluate gradient
+        var gradient = row.gradient || detailView.gradient || config.detailView.row.gradient;
+        dynSvgOutput = dynSvgOutput + svgGenerator.getDetailViewRowSvgFragement(row, y, gradient);
 
         rows[row.id] = row;
     }

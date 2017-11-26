@@ -41,8 +41,7 @@ function SvgGenerator(config) {
     var detailViewRowEjsTemplate = fs.readFileSync(process.env.EJS_DETAILVIEW_ROW_FILE || 'templates/detailview-row.ejs', 'utf-8');
     var leftDetailViewEjsTemplate = fs.readFileSync(process.env.EJS_LEFT_DETAILVIEW_FILE || 'templates/left-detailview.ejs', 'utf-8');
     var detailEjsTemplate = fs.readFileSync(process.env.EJS_DETAIL_FILE || 'templates/detail.ejs', 'utf-8');
-    var gradientEjsTemplate = fs.readFileSync(process.env.EJS_GRADIENT_FILE || 'templates/gradient.ejs', 'utf-8');
-
+ 
     this.getRteSvgFragment = function getRteSvgFragment(x, rte, colored) {
         var rteData;
         var template;
@@ -148,8 +147,8 @@ function SvgGenerator(config) {
     }
 
     //detailView Functions
-    this.getDetailViewRowSvgFragement = function getDetailViewRowSvgFragement(row, y) {
-        var ejsData = {data:{name: row.name, y: y}, config: config};
+    this.getDetailViewRowSvgFragement = function getDetailViewRowSvgFragement(row, y, gradient) {
+        var ejsData = {data:{name: row.name, y: y, id: row.id}, config: config, gradient: gradient};
         var svg = ejs.render(detailViewRowEjsTemplate, ejsData, {});
         console.log("detailview row svg fragment: ", svg);
         return svg;
@@ -169,11 +168,4 @@ function SvgGenerator(config) {
         console.log("detail svg fragment: ", svg);
         return svg;
     }
-
-    this.getDetailViewRowGradientSvgFragement = function getDetailViewRowGradientSvgFragement(gradient) {
-        var ejsData = {config: config, gradient: gradient};
-        var svg = ejs.render(gradientEjsTemplate, ejsData, {});
-        console.log("gradient svg fragment: ", svg);
-        return svg;
-    } 
 }
